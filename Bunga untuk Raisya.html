@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>hadiah ultah untuk ceweku</title>
+<style>
+:root{
+  --bg1:#1c0a1f; --bg2:#3a1238; --pink:#ff8fc0; --pink-soft:#ffc4dd; --rose:#e0509a;
+  --leaf:#4fae7a; --paper:#fffafc; --ink:#4a2342;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html,body{height:100%;margin:0}
+body{
+  background:radial-gradient(ellipse at 50% 100%,var(--bg2),var(--bg1) 70%);
+  color:#fff; font-family:"Georgia","Times New Roman",serif; overflow:hidden;
+  -webkit-tap-highlight-color:transparent;
+}
+.stars{position:fixed;inset:0;background-image:
+  radial-gradient(1.5px 1.5px at 10% 20%,#fff8,transparent),
+  radial-gradient(1px 1px at 30% 60%,#fff8,transparent),
+  radial-gradient(1.5px 1.5px at 55% 15%,#fff9,transparent),
+  radial-gradient(1px 1px at 75% 40%,#fff8,transparent),
+  radial-gradient(1.5px 1.5px at 90% 70%,#fff8,transparent),
+  radial-gradient(1px 1px at 20% 85%,#fff7,transparent),
+  radial-gradient(1px 1px at 65% 80%,#fff7,transparent);
+  background-size:260px 260px}
+.moon{position:fixed;top:5vmin;right:6vmin;width:11vmin;height:11vmin;border-radius:50%;
+  background:#fff0f7;box-shadow:0 0 6vmin 2vmin #ff8fc055}
+.stage{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+
+/* tahap 1: hati */
+#intro{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;
+  background:none;border:0;color:inherit;font:inherit;cursor:pointer;transition:opacity .7s,transform .7s}
+#intro.gone{opacity:0;transform:scale(1.4);pointer-events:none}
+#intro .t{font-size:clamp(1.4rem,6vw,2rem);letter-spacing:.14em;text-shadow:0 0 14px var(--pink),0 0 30px var(--rose)}
+.heart{width:min(40vw,170px);filter:drop-shadow(0 0 18px var(--rose));animation:beat 1.4s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+
+/* tahap 2: buket */
+#bouquetWrap{position:absolute;left:50%;bottom:0;width:min(100vw,460px);transform:translateX(-50%);opacity:0}
+#bouquetWrap.show{opacity:1}
+h1{position:absolute;top:9vh;left:0;right:0;text-align:center;margin:0 auto;font-style:italic;font-weight:400;
+  font-size:clamp(2rem,9vw,3.2rem);color:var(--pink-soft);text-shadow:0 0 18px var(--rose);opacity:0;transition:opacity 1.6s 1.6s}
+h1.show{opacity:1}
+svg.bq{display:block;width:100%;height:auto;overflow:visible}
+.stem{fill:none;stroke:var(--leaf);stroke-width:3.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.leaf{fill:var(--leaf);opacity:0;transform-box:fill-box;transform-origin:0% 100%;transform:scale(.2)}
+.bloom{transform-box:fill-box;transform-origin:50% 100%;transform:scale(0);filter:drop-shadow(0 0 7px #ff8fc088)}
+.go .stem{animation:draw 1.4s ease-out forwards;animation-delay:var(--d)}
+.go .leaf{animation:leaf .8s ease-out forwards;animation-delay:calc(var(--d) + .9s)}
+.go .bloom{animation:bloom 1.3s cubic-bezier(.2,1.4,.4,1) forwards;animation-delay:calc(var(--d) + 1.2s)}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes leaf{to{opacity:1;transform:scale(1)}}
+@keyframes bloom{0%{transform:scale(0) rotate(-12deg)}100%{transform:scale(1) rotate(0)}}
+.wrap-paper{fill:#b2368a;opacity:.0}
+.go .wrap-paper{animation:fade 1s 2.2s forwards}
+@keyframes fade{to{opacity:.95}}
+
+/* amplop */
+#env{position:absolute;left:50%;bottom:7vh;width:min(46vw,200px);aspect-ratio:3/2;transform:translateX(-50%) translateY(30px) scale(.8);
+  opacity:0;pointer-events:none;border:0;background:none;padding:0;cursor:pointer;perspective:600px;transition:opacity .9s,transform .9s}
+#env.show{opacity:1;transform:translateX(-50%);pointer-events:auto;animation:bob 2.6s 1s ease-in-out infinite}
+@keyframes bob{50%{transform:translateX(-50%) translateY(-6px)}}
+#env .body{position:absolute;inset:0;background:linear-gradient(#ffc4dd,#ff9cc6);border-radius:6px;box-shadow:0 8px 24px #0007}
+#env .fold{position:absolute;inset:0;background:linear-gradient(135deg,#ffd6e8 50%,transparent 50%),linear-gradient(225deg,#ffd6e8 50%,transparent 50%);border-radius:6px;opacity:.85}
+#env .flap{position:absolute;left:0;right:0;top:0;height:58%;background:#ffb3d4;clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top;transition:transform .7s;border-radius:6px 6px 0 0}
+#env.open .flap{transform:rotateX(180deg)}
+#env .seal{position:absolute;left:50%;top:48%;width:20%;transform:translate(-50%,-50%);z-index:2;transition:opacity .3s}
+#env.open .seal{opacity:0}
+.hint{position:absolute;left:0;right:0;bottom:2.2vh;text-align:center;font-size:.95rem;color:var(--pink-soft);opacity:0;transition:opacity .8s}
+.hint.show{opacity:.9}
+
+/* surat */
+#letter{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:5vw;background:#10051399;
+  opacity:0;pointer-events:none;transition:opacity .5s;z-index:20}
+#letter.show{opacity:1;pointer-events:auto}
+.card{width:min(92vw,420px);max-height:86dvh;overflow-y:auto;background:var(--paper);color:var(--ink);border-radius:14px;padding:22px;
+  transform:translateY(60px) scale(.9);transition:transform .7s cubic-bezier(.2,1.2,.4,1);box-shadow:0 20px 60px #000a}
+#letter.show .card{transform:none}
+.card .in{border:2px dotted var(--rose);border-radius:8px;padding:20px 18px}
+.card h2{margin:0 0 .6rem;font-size:1.25rem;color:var(--rose)}
+.card p{margin:.6rem 0;line-height:1.7;font-size:1.02rem}
+.card .sign{text-align:right;margin-top:1.2rem;font-style:italic}
+.close{display:block;margin:16px auto 0;background:var(--rose);color:#fff;border:0;border-radius:999px;padding:.6rem 1.6rem;font:inherit;cursor:pointer}
+.close:focus-visible,#intro:focus-visible,#env:focus-visible{outline:3px solid #fff;outline-offset:4px}
+
+/* kelopak jatuh */
+.petal{position:fixed;top:-5vh;width:14px;height:18px;border-radius:70% 0 70% 0;background:var(--pink);opacity:.8;pointer-events:none;z-index:10;
+  animation:fall linear forwards}
+@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(540deg)}}
+@media (prefers-reduced-motion:reduce){.heart,#env.show{animation:none}.petal{display:none}}
+</style>
+</head>
+<body>
+<div class="stars"></div><div class="moon"></div>
+<main class="stage">
+  <h1 id="title">HAPPY BIRTHDAY SAYANG.....</h1>
+
+  <div id="bouquetWrap">
+    <svg class="bq" id="bq" viewBox="0 0 300 380" aria-hidden="true"></svg>
+  </div>
+
+  <button id="intro" aria-label="Ketuk untuk membuka">
+    <span class="t">KETUK UNTUK MEMBUKA</span>
+    <svg class="heart" viewBox="0 0 100 90"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb3d9"/><stop offset="1" stop-color="#e0509a"/></linearGradient></defs>
+      <path d="M50 86C20 62 4 46 4 28 4 14 15 5 27 5c10 0 18 5 23 13C55 10 63 5 73 5c12 0 23 9 23 23 0 18-16 34-46 58z" fill="url(#hg)"/>
+      <ellipse cx="28" cy="24" rx="8" ry="5" fill="#fff" opacity=".5" transform="rotate(-35 28 24)"/></svg>
+  </button>
+
+  <button id="env" aria-label="Buka surat">
+    <div class="body"></div><div class="fold"></div><div class="flap"></div>
+    <svg class="seal" viewBox="0 0 100 90"><path d="M50 86C20 62 4 46 4 28 4 14 15 5 27 5c10 0 18 5 23 13C55 10 63 5 73 5c12 0 23 9 23 23 0 18-16 34-46 58z" fill="#e0509a"/></svg>
+  </button>
+  <div class="hint" id="hint">Ketuk amplopnya</div>
+</main>
+
+<div id="letter" role="dialog" aria-modal="true" aria-label="Surat untuk Raisya">
+  <div class="card">
+    <div class="in">
+      <h2>UNTUK SAYANGKU TERCINTAAAA</h2>
+      <p>Selamat ulang tahun yang ke-19, ya mwahhhh</p>
+      <p>Maaf, aku cuma bisa kasih ginian ehe. Semoga kamu suka ya.</p>
+      <p>Semoga urusan kamu selalu dimudahkan, dan juga semoga hubungan kita makin langgeng.</p>
+      <p>Semangat terus, ya. Aku selalu doakan yang terbaik buatmu.</p>
+      <p class="sign">Dari dira, mwahhhh.</p>
+    </div>
+    <button class="close" id="close">Tutup surat</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var NS="http://www.w3.org/2000/svg", bq=document.getElementById("bq");
+  // x kepala, y kepala, skala, jeda detik
+  var F=[[150,70,1.15,0],[100,100,1,.25],[200,100,1,.45],[62,150,.9,.7],[238,150,.9,.9],[125,140,1,1.1],[175,140,1,1.3]];
+  var h='<path class="wrap-paper" d="M95 250 L205 250 L170 372 L130 372Z"/>';
+  F.forEach(function(f,i){
+    var x=f[0],y=f[1],s=f[2],d=f[3];
+    var lx=(x<150?-1:1);
+    h+='<path class="stem" pathLength="1" style="--d:'+d+'s" d="M150 372 C150 300 '+(x+(150-x)*.3)+' 230 '+x+' '+(y+40)+'"/>';
+    h+='<path class="leaf" style="--d:'+d+'s" d="M'+(x+(150-x)*.45)+' 270 q'+(lx*34)+' -30 '+(lx*46)+' -6 q'+(lx*-20)+' 28 '+(lx*-46)+' 6z"/>';
+    h+='<g transform="translate('+x+','+(y+40)+') scale('+s+')"><g class="bloom" style="--d:'+d+'s">'+
+       '<path d="M-17 0C-22 -26 -10 -42 0 -50C10 -42 22 -26 17 0C10 12 -10 12 -17 0Z" fill="#c23a86"/>'+
+       '<path d="M-17 0C-24 -22 -18 -36 -8 -44C-2 -26 -4 -10 0 8C-8 10 -14 6 -17 0Z" fill="#ff8fc0"/>'+
+       '<path d="M17 0C24 -22 18 -36 8 -44C2 -26 4 -10 0 8C8 10 14 6 17 0Z" fill="#ffb3d9"/>'+
+       '<path d="M-8 2C-12 -20 -4 -36 0 -42C4 -36 12 -20 8 2C4 8 -4 8 -8 2Z" fill="#ffd0e6"/>'+
+       '</g></g>';
+  });
+  bq.innerHTML=h;
+
+  var intro=document.getElementById("intro"), wrap=document.getElementById("bouquetWrap"),
+      title=document.getElementById("title"), env=document.getElementById("env"),
+      hint=document.getElementById("hint"), letter=document.getElementById("letter");
+
+  function rain(n){
+    for(var i=0;i<n;i++){
+      var p=document.createElement("div"); p.className="petal";
+      p.style.left=Math.random()*100+"vw";
+      p.style.setProperty("--dx",(Math.random()*80-40)+"px");
+      p.style.animationDuration=(5+Math.random()*5)+"s";
+      p.style.animationDelay=(Math.random()*3)+"s";
+      p.style.background=["#ff8fc0","#ffb3d9","#e0509a"][i%3];
+      document.body.appendChild(p);
+      setTimeout(function(el){el.remove()},13000,p);
+    }
+  }
+
+  // Ketuk 1: hati hilang, bunga mekar
+  intro.addEventListener("click",function(){
+    intro.classList.add("gone");
+    wrap.classList.add("show"); bq.classList.add("go");
+    title.classList.add("show");
+    setTimeout(function(){env.classList.add("show");hint.classList.add("show")},4300);
+    setTimeout(function(){rain(14)},2600);
+  });
+
+  // Ketuk 2: amplop terbuka, lalu surat muncul
+  env.addEventListener("click",function(){
+    if(env.classList.contains("open"))return;
+    env.classList.add("open"); hint.classList.remove("show");
+    setTimeout(function(){letter.classList.add("show");rain(18)},750);
+  });
+
+  function closeLetter(){letter.classList.remove("show");env.classList.remove("open");hint.classList.add("show")}
+  document.getElementById("close").addEventListener("click",closeLetter);
+  letter.addEventListener("click",function(e){if(e.target===letter)closeLetter()});
+})();
+</script>
+</body>
+</html>
